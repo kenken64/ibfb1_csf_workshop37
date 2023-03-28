@@ -41,22 +41,8 @@ public class FileUploadService {
         String key = UUID.randomUUID().toString()
                     .substring(0, 8);
 
-        StringTokenizer tk  = new StringTokenizer(file.getOriginalFilename()
-                , ".");
-
-        int count=0;
-        String filenameExt = "";
         String finalfileUpload = "";
-        while(tk.hasMoreTokens()){
-            if(count == 1){
-                filenameExt = tk.nextToken();
-                break;
-            }
-            count++;
-        }
-
-        if(filenameExt.equals("blob"))
-            finalfileUpload = filenameExt  +"png";
+        finalfileUpload = key  +".png";
 
         PutObjectRequest putRequest = 
             new PutObjectRequest(
